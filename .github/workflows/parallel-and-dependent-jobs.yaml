@@ -1,0 +1,32 @@
+name: Parallel-and-Dependent-Jobs
+on: 
+    push:
+        branches:
+            - main 
+
+    
+jobs:
+    run-shell-commands:
+        runs-on: ubuntu-latest
+        steps:
+            - name: echo a string
+              run: echo "Hello GitHub Actions"
+
+    parallel-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Parallel job
+              run: |
+               echo "running a parallel job"
+               echo "Hi Pravali"
+    
+    dependent-job:
+        runs-on: ubuntu-latest
+        needs: run-shell-commands 
+        steps:
+            - name: Dependent job
+              run: echo "dependent job"
+
+
+             
+
