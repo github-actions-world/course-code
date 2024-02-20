@@ -1,0 +1,12 @@
+name: pull-request-event
+
+on: [push, pull_request,]
+jobs:
+    pull-request-event: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: getting commit id and branch
+              run: |
+                echo GITHUB_SHA
+                echo GITHUB_REF
+            - uses: actions/checkout@v3
