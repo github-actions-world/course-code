@@ -7,5 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: say hi to my love
-        run: echo "hi PRAVALI"
-        run: echo $GITHUB_REF
+        run: |
+          echo "hi PRAVALI"
+          echo $GITHUB_REF
