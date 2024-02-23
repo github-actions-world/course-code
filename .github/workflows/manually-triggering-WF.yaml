@@ -1,6 +1,40 @@
 name: Workflow Dispatch Event
 on: 
   workflow_dispatch:
+    inputs:
+      string: 
+        description: Enter your Name
+        type: string
+        required: true
+        default: "-"
+      number:
+        description: Enter your Age
+        type: number
+        required: true
+        default: 18
+      option:
+        description: Select your Preferred location
+        type: choice
+        required: true
+        default: "chennai"
+        options:
+          - chennai
+          - hyderabad
+          - mumbai
+          - bangalore
+          - pune
+          - noida
+          - gurgon
+          - maharastra
+          - kerala
+      boolean:
+        description: Are you will to come to office 5 days
+        type: boolean
+        required: false
+      environment:
+        description: Select environment
+        type: environment
+        required: true
 
 jobs:
   say-hi:
@@ -10,3 +44,12 @@ jobs:
         run: |
           echo "hi PRAVALI"
           echo $GITHUB_REF
+  printing-response:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "name: ${{inputs.string}}"
+          echo "age: ${{inputs.number}}"
+          echo "preferred location: ${{inputs.option}}"
+          echo "5 days: ${{inputs.boolean}}"
+          echo "environment: ${{inputs.environment}}"
