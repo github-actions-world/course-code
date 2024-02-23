@@ -1,0 +1,12 @@
+name: Workflow Dispatch Event
+on: 
+  workflow_dispatch:
+
+jobs:
+  say-hi:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: say hi to my love
+        run: |
+          echo "hi PRAVALI"
+          echo $GITHUB_REF
