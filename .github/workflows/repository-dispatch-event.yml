@@ -1,0 +1,14 @@
+name: repository dispatch event
+# repository_dispatch event is similar to workflow_dispatch event
+# we can trigger the workflow from an external REST API. the workflow can be triggered by the events that happen externally.
+# inorder to run repository dispatch event the workflow should be in the default branch means it runs only on default branch
+on:
+    repository_dispatch:
+
+jobs:
+    echo-a-string:
+        runs-on: ubuntu-latest
+        steps: 
+            - run: |
+                echo "this is a repository despatch event"
+                
