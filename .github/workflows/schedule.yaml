@@ -1,0 +1,9 @@
+name: scheduling the work flows runs
+on:
+    schedule: 
+        - cron: 0/5 * * * *
+jobs:
+    echo-a-string:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "this is a schedule event which contains cron jobs"
