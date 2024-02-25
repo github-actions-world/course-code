@@ -1,4 +1,4 @@
-name: scheduling the work flows runs
+name: scheduling the workflow runs
 on:
     schedule: 
         - cron: 0/5 * * * *
