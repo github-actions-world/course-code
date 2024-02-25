@@ -1,5 +1,8 @@
 name: Expressions and Contexts
 on: [push, pull_request, issues, workflow_dispatch]
+# we can customize the title that appears in the wf run
+# using run-name key. we use context to dynamically create a title for our run
+run-name: "Expressions and Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
 jobs:
     using-expressions-and-contexts:
         runs-on: ubuntu-latest
