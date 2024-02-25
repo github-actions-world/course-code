@@ -21,7 +21,7 @@ jobs:
             # it is used for dynamically reference data and execute commands based on certain commands or inputs
             # github, job, secrets, steps, runner, matrix, vars, needs, strategy, env are called objects or contexts.
               run: |
-                echo "${{ toJson(github) }}"
+                echo '${{ toJson(github) }}''
                 echo "${{ toJson(job) }}"
                 echo "${{ toJson(secrets) }}"
                 echo "${{ toJson(steps) }}"
