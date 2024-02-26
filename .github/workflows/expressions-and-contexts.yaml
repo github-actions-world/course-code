@@ -5,8 +5,25 @@ on: [push, pull_request, issues, workflow_dispatch]
 run-name: "Expressions and Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
 
 jobs:
+    runs-on-issues-and-prs:
+      runs-on: ubuntu-latest
+      # : github.event_name == 'issues' || github.event_name == 'pull_request'
+      # : contains('hello', 'll') 
+      if: contains(fromJson('["issues","pull_requests"]'), github.event_name) 
+      # in the above command we are checking if the array has triggered event
+      steps:
+        - name: run only if the issue has a bug lable
+          if: contains(github.event.issue.labels.*.name, 'bug')
+          # github.event.issue.labels.*.name -- it will return an array of name properties inside object-- object filtering syntax
+          # echo "${{join([1,2,3,4],', ')}}" o/p= 1, 2, 3, 4
+          run: echo "${{join(github.event.issue.labels.*.name,', ')}}"
     using-expressions-and-contexts:
         runs-on: ubuntu-latest
+        # we can use if key in job level or in step level 
+        # if the value inside ${{}} evaluates to true then the job will be executed else it will be skipped
+        # we can also write our expression without ${{}} because whatever written in the if line github will treat it as an expression.
+        # in the below if key we are making our wf run only to push event
+        if: ${{ github.event_name == 'push' }}
         steps:
             - name: Expressions
               id: expression
